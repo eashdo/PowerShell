@@ -9,11 +9,14 @@ $SearchName = "Friendly Search Name"
 #$EndDate = "13-Mar-2020"
 #$Start = (Get-Date $StartDate).ToString('yyyy-MM-dd')   
 #$End = (Get-Date $EndDate).ToString('yyyy-MM-dd')
-#$ContentQuery = '(c:c)(received=' + $Start + '..' + $End +')(senderauthor=' + $Sender + ')(subjecttitle="' + $Subject + '")'
 
+<# HowTo Write the query to use the above details:
+$ContentQuery = '(c:c)(received=' + $Start + '..' + $End +')(senderauthor=' + $Sender + ')(subjecttitle="' + $Subject + '")'
 $ContentQuery = '(from=' + $Sender + ')(subject="' + $Subject + '")'
+
 #Below is an example of how to pull content from a specific folder ID within a mailbox
-#$ContentQuery = '(folderid:8BB8E12C9F0BDA4E8F049FD808B93E3000000000010F0000)'
+$ContentQuery = '(folderid:8BB8E12C9F0BDA4E8F049FD808B93E3000000000010F0000)'
+#>
 
 If (Get-ComplianceSearch -Identity $SearchName) {
    Write-Host "Cleaning up old search"
