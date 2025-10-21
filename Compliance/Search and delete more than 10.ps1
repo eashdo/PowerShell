@@ -1,4 +1,10 @@
-﻿# Some information for the batch
+﻿<#
+   This script utilizes the Security and Compliance (IPPS) functionality of the Exchange Online PowerShell Module
+   To connect, use Connect-IPPSSession
+   Further details: https://learn.microsoft.com/en-us/powershell/exchange/connect-to-scc-powershell?view=exchange-ps
+#>
+
+# Some information for the batch
 $SearchName = "Friendly Search Name"
 # Some information to identify the messages we want to purge, use whatever you need here
 #$Sender = "sender@domain.com"
