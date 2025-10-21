@@ -1,9 +1,9 @@
 ﻿# Some information for the batch
-$SearchName = "Monthly E04 Branch Meeting"
-# Some information to identify the messages we want to purge
-$Sender = "MCampol@oib.ca"
-$Subject = "Osoyoos Indian Band, June 2022 RFQ!!!"
-$Location = "no-reply-canada@finning.com"
+$SearchName = "Friendly Search Name"
+# Some information to identify the messages we want to purge, use whatever you need here
+#$Sender = "sender@domain.com"
+#$Subject = "Subject of Message"
+#$Location = "Target Mailbox if desired"
 # Date range for the search - make this as precise as possible
 #$StartDate = "10-Mar-2020"
 #$EndDate = "13-Mar-2020"
@@ -11,8 +11,9 @@ $Location = "no-reply-canada@finning.com"
 #$End = (Get-Date $EndDate).ToString('yyyy-MM-dd')
 #$ContentQuery = '(c:c)(received=' + $Start + '..' + $End +')(senderauthor=' + $Sender + ')(subjecttitle="' + $Subject + '")'
 
-#$ContentQuery = '(from=' + $Sender + ')(subject="' + $Subject + '")'
-$ContentQuery = '(folderid:8BB8E12C9F0BDA4E8F049FD808B93E3000000000010F0000)'
+$ContentQuery = '(from=' + $Sender + ')(subject="' + $Subject + '")'
+#Below is an example of how to pull content from a specific folder ID within a mailbox
+#$ContentQuery = '(folderid:8BB8E12C9F0BDA4E8F049FD808B93E3000000000010F0000)'
 
 If (Get-ComplianceSearch -Identity $SearchName) {
    Write-Host "Cleaning up old search"
