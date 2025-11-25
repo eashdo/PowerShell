@@ -22,10 +22,12 @@ ForEach ($T in $Teams) {
     # Get Owners, members and guests
 
     $TeamUsers = Get-TeamUser -GroupId $Team.GroupID
-                    
-    $TeamOwners = $TeamUsers | Where-Object {$_.Role -like "owner"}
-    $TeamMembers = $TeamUsers | Where-Object {$_.Role -like "member"}
-    $TeamGuests = $TeamUsers | Where-Object {$_.Role -like "guest"}
+    $TeamOwnerCount     = ($TeamUsers | Where-Object {$_.Role -like "owner"}).count
+    $TeamMemberCount    = ($TeamUsers | Where-Object {$_.Role -like "member"}).count
+    $TeamGuestCount     = ($TeamUsers | Where-Object {$_.Role -like "guest"}).count                
+    $TeamOwners     = ($TeamUsers | Where-Object {$_.Role -like "owner"} | Select-Object -ExpandProperty User) -join ', '
+    $TeamMembers    = ($TeamUsers | Where-Object { $_.Role -like "member" } | Select-Object -ExpandProperty User) -join ', '
+    $TeamGuests     = ($TeamUsers | Where-Object {$_.Role -like "guest"} | Select-Object -ExpandProperty User) -join ', '
 
     # Put all details into an object
 
@@ -36,11 +38,11 @@ ForEach ($T in $Teams) {
     $output | add-member NoteProperty "Visibility" -value $Team.Visibility
     $output | add-member NoteProperty "Archived" -value $Team.Archived
     $output | Add-Member NoteProperty "ChannelCount" -Value $ChannelCount
-    $output | Add-Member NoteProperty "OwnerCount" -Value $TeamOwners.count
+    $output | Add-Member NoteProperty "OwnerCount" -Value $TeamOwnercount
     $output | Add-Member NoteProperty "Owners" -Value $TeamOwners
-    $output | Add-Member NoteProperty "MemberCount" -Value $TeamMembers.count
+    $output | Add-Member NoteProperty "MemberCount" -Value $TeamMembercount
     $output | Add-Member NoteProperty "Members" -Value $TeamMembers
-    $output | Add-Member NoteProperty "GuestCount" -Value $TeamGuests.count
+    $output | Add-Member NoteProperty "GuestCount" -Value $TeamGuestcount
     $output | Add-Member NoteProperty "Guests" -Value $TeamGuests
     $output | add-member NoteProperty "GroupId" -value $Team.GroupId
 
@@ -48,4 +50,4 @@ ForEach ($T in $Teams) {
     }
 
     # Output collection
-    $OutputCollection
+    $OutputCollection | Export-Csv .\Active_Teams.csv

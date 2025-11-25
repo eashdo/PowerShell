@@ -6,8 +6,8 @@ $csvfilename = ".\UsageReport_$((Get-Date -format dd-MM-yy).ToString()).csv"
 New-Item $csvfilename -type file -force
 Add-Content $csvfilename "DisplayName,UPN,Disabled,TotalSize,Quota,Location,Type,Policy"
 
-#Get all mailboxes in tenant
-$Mailboxes = Get-Mailbox -ResultSize Unlimited -RecipientTypeDetails UserMailbox
+#Get CA-user mailboxes in tenant 
+$Mailboxes = Get-Mailbox -ResultSize Unlimited -RecipientTypeDetails UserMailbox -filter 'UsageLocation -eq "Canada"'
 
 Foreach ($Mailbox in $Mailboxes){
     
