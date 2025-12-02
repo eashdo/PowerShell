@@ -18,7 +18,7 @@ Foreach ($N in $NoArchives){
 #AutoExpandingArchiveEnabled and RetentionPolicy either don't permit filtering or don't filer properly. Thus we need to grab the entire userbase to action against, thanks MS...
 $Mailboxes = Get-Mailbox -RecipientTypeDetails UserMailbox -ResultSize Unlimited -Filter 'UsageLocation -eq "Chile"' 
 
-$NoAutoExpanding =  $Mailboxes | Where-Object {$_.AutoExpandingArchiveEnabled -eq "False"}
+$NoAutoExpanding =  $Mailboxes | Where-Object {$_.AutoExpandingArchiveEnabled -like "False"}
 Write-Host "There are currently" $NoAutoExpanding.count "user mailboxes in this batch without auto-expanding archives."
 Write-Host "Correcting this issue..."
 
