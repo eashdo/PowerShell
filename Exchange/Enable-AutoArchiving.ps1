@@ -11,8 +11,8 @@ Write-Host "Correcting this issue..."
 
 Foreach ($N in $NoArchives){
 
-    Enable-Mailbox $N.Alias -Archive | Out-Null
-    Enable-Mailbox $N.Alias -AutoExpandingArchive | Out-Null
+    Enable-Mailbox $N.WindowsLiveID -Archive | Out-Null
+    Enable-Mailbox $N.WindowsLiveID -AutoExpandingArchive | Out-Null
 }
 
 #AutoExpandingArchiveEnabled and RetentionPolicy either don't permit filtering or don't filer properly. Thus we need to grab the entire userbase to action against, thanks MS...
@@ -24,7 +24,7 @@ Write-Host "Correcting this issue..."
 
 Foreach ($NA in $NoAutoExpanding){
 
-    Enable-Mailbox $NA.Alias -AutoExpandingArchive | Out-Null
+    Enable-Mailbox $NA.WindowsLiveID -AutoExpandingArchive | Out-Null
 }
 
 $NoMRMPolicy = $Mailboxes | Where-Object {$_.RetentionPolicy -eq "Default MRM Policy"}
@@ -33,7 +33,7 @@ Write-Host "Applying our 1-year policy to these mailboxes..."
 
 Foreach ($NM in $NoMRMPolicy){
 
-    Set-Mailbox $NM.Alias -RetentionPolicy "Global Policy (recoverable+1yr msgs to archive)"
+    Set-Mailbox $NM.WindowsLiveID -RetentionPolicy "Global Policy (recoverable+1yr msgs to archive)"
 }
 
 Write-host "All actions have been completed. Here is a summary:"
