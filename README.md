@@ -9,5 +9,3 @@ I am in no way responsible for any of the actions performed by your usage of the
 
 Be aware, Microsoft is always changing things in the back-end and retiring modules/cmdlets.
 Some of these scripts may not work depending on when they were last updated. I do not test these regularly. This is especially true around Azure AD/Entra ID.
-
-Feel free to check out my blog for some examples and stories, I have not posted there in quite some time now: https://evandottech.wordpress.com
