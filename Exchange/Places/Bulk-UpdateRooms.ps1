@@ -8,7 +8,7 @@ depending on where their home is. This script will update the cloud objects and 
 #Connect-ExchangeOnline
 
 #Validate rooms and get sync status. Add this to a CSV to manually copy over to spreadsheet provided for easier filtering later...
-$Rooms = Import-Csv '.\Finning Global Rooms List.csv'
+$Rooms = Import-Csv '.\Global Rooms List.csv'
 $csvfilename = ".\RoomSyncStatus.csv"
 New-Item $csvfilename -type file -force
 Add-Content $csvfilename "UPN,SyncStatus"
