@@ -29,7 +29,7 @@ Foreach ($R in $Rooms){
 }
 
 #Re-import rooms once the DirSynced column has been added
-$Rooms = Import-Csv '.\Finning Global Rooms List.csv'
+$Rooms = Import-Csv '.\Global Rooms List.csv'
 $CloudRooms = $Rooms | Where-Object {$_.SyncStatus -eq "False"}
 
 Foreach ($C in $CloudRooms){

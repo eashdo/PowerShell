@@ -2,7 +2,7 @@
 #Connect-ExchangeOnline
 
 #(Re)set Variables
-$Group = 'tech_services_mail_out@finning.com'
+$Group = 'GROUP_UPN@Domain.com'
 $members = New-Object System.Collections.ArrayList
 $csvfilename = ".\$Group Nested Members.csv"
 New-Item $csvfilename -type file -force

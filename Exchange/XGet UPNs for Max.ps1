@@ -1,12 +1,11 @@
 <#
-    The idea here is to check the list of mailboxes I provided Max with against AAD/EXO and see if there are ever any cases where the PrimarySMTP <> UPN
-    Max wants a list of UPNs from AAD but I'm fairly sure that's going to be the same as the Primary SMTP 9/10 times
-    Honestly, probably trash this and never post it unless you really need to...
+    The idea here is to check the list of mailboxes against AAD/EXO and see if there are ever any cases where the PrimarySMTP <> UPN
+    I need a list of UPNs from AAD but I'm fairly sure that's going to be the same as the Primary SMTP 9/10 times
 #>
 Connect-AzureAD
 Connect-ExchangeOnline
 
-$Mailboxes = Import-Csv 'C:\users\evan.ashdown\OneDrive - Finning\Documents\Downloads\EvanReport_Mailboxes.csv'
+$Mailboxes = Import-Csv '.\EvanReport_Mailboxes.csv'
 
 #Reset Arrays to be empty
 $MismatchUPNs = @()

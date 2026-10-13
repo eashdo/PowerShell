@@ -24,7 +24,7 @@ Add-Content $csvfilename "Display Name,Alias,Primary SMTP,Usage Location,Exchang
 
 #Get list of DirSynced Mailboxes that belong to our primary domain
 #Alias was too vauge in some cases, using PrimarySMTP instead as it cannot be vauge
-$CloudMailboxes = Get-ExchOnlineMailbox -resultsize Unlimited | ? {($_.IsDirSynced -eq 'True') -and ($_.PrimarySMTPAddress -like "*@finning.com")} | Select-Object -ExpandProperty PrimarySmtpAddress
+$CloudMailboxes = Get-ExchOnlineMailbox -resultsize Unlimited | ? {($_.IsDirSynced -eq 'True') -and ($_.PrimarySMTPAddress -like "*@DOMAIN.com")} | Select-Object -ExpandProperty PrimarySmtpAddress
 
 #Reset counts everytime the script is ran for progress bar
 #This isn't working right now, idk why but I can't be bothered to fix it...
