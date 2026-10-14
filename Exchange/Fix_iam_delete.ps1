@@ -6,8 +6,7 @@ Foreach ($M in $Mailboxes){
 
     try {
         
-        Get-Mailbox -SoftDeletedMailbox $M.userprincipalname -ErrorAction Stop,SilentlyContinue | Out-Null
-        Undo-SoftDeletedMailbox $M.UserPrincipalName
+        Get-Mailbox -SoftDeletedMailbox $M.userprincipalname -ErrorAction Stop,SilentlyContinue -BackgroundColor Green | Out-Null
     }
 
     Catch {
